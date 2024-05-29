@@ -1,7 +1,7 @@
 from fractions import Fraction as PyFraction
 
 class Fraction:
-    def init(self, numerator, denominator):
+    def __init__(self, numerator, denominator):
         if denominator == 0:
             raise ValueError("Denominator cannot be zero")
         self.numerator = numerator
@@ -20,6 +20,6 @@ class Fraction:
         return self.numerator / self.denominator
 
 # Example usage
-fraction = Fraction(2, 6)
+fraction = Fraction(2,6)
 print(fraction.to_rational())  
 print(fraction.to_float())

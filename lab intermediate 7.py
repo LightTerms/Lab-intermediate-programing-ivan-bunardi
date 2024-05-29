@@ -1,5 +1,5 @@
 class Fraction:
-    def _init_(self, numerator=0, denominator=1):
+    def __init__(self, numerator=0, denominator=1):
         if denominator == 0:
             raise ZeroDivisionError("Denominator cannot be zero.")
         if not isinstance(numerator, int) or not isinstance(denominator, int):
@@ -21,7 +21,7 @@ class Fraction:
             a, b = b, a % b
         return a
 
-    def _add_(self, other):
+    def __add__(self, other):
         if isinstance(other, Fraction):
             new_numerator = self._numerator * other._denominator + other._numerator * self._denominator
             new_denominator = self._denominator * other._denominator
@@ -29,7 +29,7 @@ class Fraction:
         else:
             raise TypeError("Can only add Fraction with Fraction.")
     
-    def _sub_(self, other):
+    def __sub__(self, other):
         if isinstance(other, Fraction):
             new_numerator = self._numerator * other._denominator - other._numerator * self._denominator
             new_denominator = self._denominator * other._denominator
@@ -37,7 +37,7 @@ class Fraction:
         else:
             raise TypeError("Can only subtract Fraction with Fraction.")
 
-    def _mul_(self, other):
+    def __mul__(self, other):
         if isinstance(other, Fraction):
             new_numerator = self._numerator * other._numerator
             new_denominator = self._denominator * other._denominator
@@ -45,7 +45,7 @@ class Fraction:
         else:
             raise TypeError("Can only multiply Fraction with Fraction.")
 
-    def _truediv_(self, other):
+    def __truediv__(self, other):
         if isinstance(other, Fraction):
             new_numerator = self._numerator * other._denominator
             new_denominator = self._denominator * other._numerator
@@ -55,29 +55,29 @@ class Fraction:
         else:
             raise TypeError("Can only divide Fraction by Fraction.")
     
-    def _neg_(self):
+    def __neg__(self):
         return Fraction(-self._numerator, self._denominator)
 
-    def _eq_(self, other):
+    def __eq__(self, other):
         return self._numerator == other._numerator and self._denominator == other._denominator
 
-    def _str_(self):
+    def __str__(self):
         return f"{self._numerator}/{self._denominator}"
     
-    def _repr_(self):
+    def __repr__(self):
         return f"Fraction({self._numerator}, {self._denominator})"
     
-    def _float_(self):
+    def __float__(self):
         return self._numerator / self._denominator
     
-    def _int_(self):
+    def __int__(self):
         return self._numerator // self._denominator
     
 
-## BankAccount Class
 class BankAccount:
-    _next_account_number = 1  
-    def _init_(self, owner, balance=0):
+    _next_account_number = 1
+    
+    def __init__(self, owner, balance=0):
         self.owner = owner
         self.balance = balance
         self.account_number = BankAccount._next_account_number
@@ -97,16 +97,15 @@ class BankAccount:
         self.balance -= amount
         return self.balance
 
-    def _str_(self):
+    def __str__(self):
         return f"Account({self.account_number}): {self.owner}, Balance: ${self.balance:.2f}"
 
-    def _repr_(self):
+    def __repr__(self):
         return f"BankAccount(owner={self.owner}, balance={self.balance}, account_number={self.account_number})"
 
 
-## Family Class
 class Family:
-    def _init_(self, parents, *children):
+    def __init__(self, parents, *children):
         if len(parents) != 2:
             raise ValueError("Family must have exactly two parents.")
         
@@ -116,22 +115,22 @@ class Family:
     def add_child(self, child):
         self.children.append(child)
     
-    def _iter_(self):
+    def __iter__(self):
         return iter(self.children)
     
-    def _str_(self):
+    def __str__(self):
         parents_str = f"Parents: {self.parents[0]} and {self.parents[1]}"
         children_str = ", ".join(self.children) if self.children else "No children"
         return f"{parents_str}\nChildren: {children_str}"
     
-    def _repr_(self):
+    def __repr__(self):
         return f"Family(parents={self.parents}, children={self.children})"
 
 
 # Example usage for Fraction class:
 f1 = Fraction(1, 2)
 f2 = Fraction(3, 4)
-print(f1 + f2) 
+print(f1 + f2)  
 print(f1 - f2)  
 print(f1 * f2)  
 print(float(f1))  
