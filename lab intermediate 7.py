@@ -1,5 +1,3 @@
-#lab intermediate 7
-
 class Fraction:
     def _init_(self, numerator=0, denominator=1):
         if denominator == 0:
@@ -62,7 +60,7 @@ class Fraction:
 
     def _eq_(self, other):
         return self._numerator == other._numerator and self._denominator == other._denominator
-    
+
     def _str_(self):
         return f"{self._numerator}/{self._denominator}"
     
@@ -76,7 +74,7 @@ class Fraction:
         return self._numerator // self._denominator
     
 
-## Bank Class
+## BankAccount Class
 class BankAccount:
     _next_account_number = 1  
     def _init_(self, owner, balance=0):
@@ -104,8 +102,9 @@ class BankAccount:
 
     def _repr_(self):
         return f"BankAccount(owner={self.owner}, balance={self.balance}, account_number={self.account_number})"
-    
-## Family
+
+
+## Family Class
 class Family:
     def _init_(self, parents, *children):
         if len(parents) != 2:
@@ -129,4 +128,29 @@ class Family:
         return f"Family(parents={self.parents}, children={self.children})"
 
 
+# Example usage for Fraction class:
+f1 = Fraction(1, 2)
+f2 = Fraction(3, 4)
+print(f1 + f2) 
+print(f1 - f2)  
+print(f1 * f2)  
+print(float(f1))  
+print(int(f1))  
 
+# Example usage for BankAccount class:
+account1 = BankAccount("Alice", 1000)
+account2 = BankAccount("Bob", 500)
+print(account1)  
+print(account2)  
+account1.deposit(200)
+print(account1) 
+account1.withdraw(300)
+print(account1)  
+
+# Example usage for Family class:
+family = Family(("John", "Jane"), "Alice", "Bob")
+print(family)  
+family.add_child("Charlie")
+print(family)  
+for child in family:
+    print(child)

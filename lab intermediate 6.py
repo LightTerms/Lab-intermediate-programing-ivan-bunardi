@@ -1,28 +1,25 @@
-#lab intermediate
+from fractions import Fraction as PyFraction
 
+class Fraction:
+    def init(self, numerator, denominator):
+        if denominator == 0:
+            raise ValueError("Denominator cannot be zero")
+        self.numerator = numerator
+        self.denominator = denominator
+        self._simplify()
 
-from collections import Counter
+    def _simplify(self):
+        fraction = PyFraction(self.numerator, self.denominator)
+        self.numerator = fraction.numerator
+        self.denominator = fraction.denominator
 
-class ClickCounter:
-    def __init__(self):
-        self.counter = Counter()
+    def to_rational(self):
+        return f"{self.numerator}/{self.denominator}"
 
-    def reset(self):
-        self.counter = Counter()
-
-    def click(self):
-        self.counter['clicks'] += 1
-
-    def getValue(self):
-        return self.counter['clicks']
+    def to_float(self):
+        return self.numerator / self.denominator
 
 # Example usage
-tally = ClickCounter()
-tally.reset()
-tally.click()
-tally.click()
-result = tally.getValue()
-print(result)  # Output: 2
-tally.click()
-result = tally.getValue()
-print(result)  # Output: 3
+fraction = Fraction(2, 6)
+print(fraction.to_rational())  
+print(fraction.to_float())
