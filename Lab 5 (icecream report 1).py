@@ -13,6 +13,8 @@ with open("icecream.txt", "r") as data:
             salesdata[flavor] = sales
 
 print(salesdata)
+
+
 #nomor 2
 Salesdata = {}
 with open("icecream.txt", "r") as data:
@@ -34,6 +36,8 @@ for flavor, total_sale in sorted(flavor_totals.items()):
 print("\nSales by Store:")
 for i, store_sale in enumerate(store_totals):
     print(f"Store {i+1}: {store_sale:.2f}")
+
+
 #nomor 3
 def analyze_text(text_file, word_file):
 
